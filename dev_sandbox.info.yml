@@ -1,0 +1,6 @@
+name: 'Developer Sandbox'
+description: '?sb=1 to any URL to reroute to sandbox.inc.'
+package: 'Development'
+type: module
+core_version_requirement: '^8 || ^9 || ^10'
+version: '0.0.0'

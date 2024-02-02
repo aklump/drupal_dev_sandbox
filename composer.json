@@ -1,0 +1,14 @@
+{
+  "name": "aklump_drupal/dev_sandbox",
+  "description": "?sb=1 to any URL to reroute to sandbox.inc",
+  "type": "drupal-custom-module",
+  "license": "GPL-2.0+",
+  "homepage": "https://drupal.org/project/dev_sandbox",
+  "authors": [
+    {
+      "name": "Aaron Klump (aklump)",
+      "homepage": "https://www.drupal.org/u/aklump",
+      "role": "Maintainer"
+    }
+  ]
+}

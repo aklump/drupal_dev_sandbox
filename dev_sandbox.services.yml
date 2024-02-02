@@ -1,0 +1,4 @@
+services:
+  dev_sandbox.event_subscriber:
+    class: \Drupal\dev_sandbox\EventSubscriber\Sandbox
+    tags: [{ name: event_subscriber }]
