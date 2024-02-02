@@ -5,35 +5,44 @@ tags: ''
 
 # Dev Sandbox Drupal Module
 
+![sandbox](../../images/sandbox.jpg)
+
+**Only enable this module in development environments!**
+
 ## Summary
 
-Define a "sandbox PHP file".  When you add `sb=1` to any URL, that file will be used as the request controller, fully bootstrapped.  Use this file to test out code in a bootstrapped environment during development.  `sb=0` will disable the sandboxed controller.
+Define a a file at _private://dev_sandbox.inc_. Add `sb=1` to any request query string and that file becomes the response controller. Quickly test out snippets and code ideas in a bootstrapped environment during development.
 
-Include `theme={theme_name}` and that theme will be set as the active theme for the sandbox.  This comes in handy if you are developing a single theme.
+Include `theme={theme_name}` to set the active theme for the sandbox.
 
+## Example
 
+_private://dev_sandbox.inc_
 
-## Installation
+```php
+<?php
+echo 'Here is my sandbox controller output.';
+```
 
-1. Download this module to _install/composer/dev_sandbox_.
-2. Add the following to the application's _composer.json_ above web root.
+View source for: https://website.com/?sb=1&theme=claro
 
-    ```json
-    {
-      "repositories": [
-        {
-          "type": "path",
-          "url": "install/composer/dev_sandbox"
-        }
-      ]
-    }
-    ```
-3. Add `web/modules/custom/dev_sandbox` top-level _.gitignore_ (IMPORTANT! no trailing slash)!
-4. Now run `composer require aklump_drupal/dev_sandbox:@dev`
+```text
+<!-- DEV SANDBOX DEBUG -->
+<!-- ACTIVE THEME is 'claro' -->
+<!-- BEGIN OUTPUT from 'private://dev_sandbox.inc' -->
+Here is my sandbox controller output.
+```
+
+{{ composer_install|raw }}
+
 5. Enable this module.
 
 ## Configuration
 
-```php
-$config['dev_sandbox.settings']['foo'] = 'bar;
-```
+None
+
+## Usage
+
+1. When you want to reroute the request to _private://dev_sandbox.inc_ add `sb=1` to the URL.
+2. To set the active theme also include `theme={theme_name}` to the URL
+3. Test out code by writing it in _private://dev_sandbox.inc_

@@ -81,12 +81,7 @@ class Sandbox implements EventSubscriberInterface {
   }
 
   private function getSandboxPath(): string {
-    $filepath = \Drupal::config('dev_sandbox')->get('include');
-    if (strpos($filepath, DRUPAL_ROOT) !== 0) {
-      $filepath = DRUPAL_ROOT . $filepath;
-    }
-
-    return $filepath;
+    return 'private://dev_sandbox.inc';
   }
 
   /**
