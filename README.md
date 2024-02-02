@@ -41,7 +41,7 @@ Here is my sandbox controller output.
     ]
     ```
 
-1. Then `composer require aklump_drupal/dev_sandbox:@dev`    
+1. Then `composer require aklump_drupal/dev_sandbox:^0.0`    
 
 5. Enable this module.
 

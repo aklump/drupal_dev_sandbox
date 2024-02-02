@@ -1,0 +1,12 @@
+author: aklump
+create_tags: patch
+do_version_commit: true
+git_root: .
+hotfix_hotfix_message: ''
+master: main
+patch_prefix: .
+preserve_patch_zero: true
+push_master: auto
+push_tags: auto
+release_commit_message: 'New release VERSION.'
+version_file: dev_sandbox.info.yml
