@@ -3,7 +3,7 @@ id: readme
 tags: ''
 -->
 
-# Dev Sandbox Drupal Module
+# Developer's Coding Sandbox Drupal Module
 
 ![sandbox](../../images/sandbox.jpg)
 
@@ -11,13 +11,11 @@ tags: ''
 
 ## Summary
 
-Define a a file at _private://dev_sandbox.inc_. Add `sb=1` to any request query string and that file becomes the response controller. Quickly test out snippets and code ideas in a bootstrapped environment during development.
-
-Include `theme={theme_name}` to set the active theme for the sandbox.
+Create a file at _private://dev\_sandbox.inc_. Add `sb=1` to any request query string and now _dev\_sandbox.inc_ becomes the response controller. Quickly test out snippets and code ideas in a bootstrapped environment during development. You may also set the active sandbox theme.
 
 ## Example
 
-_private://dev_sandbox.inc_
+_private://dev\_sandbox.inc_
 
 ```php
 <?php
@@ -43,6 +41,8 @@ None
 
 ## Usage
 
-1. When you want to reroute the request to _private://dev_sandbox.inc_ add `sb=1` to the URL.
+1. When you want to reroute the request to _private://dev\_sandbox.inc_ add `sb=1` to the URL.
 2. To set the active theme also include `theme={theme_name}` to the URL
-3. Test out code by writing it in _private://dev_sandbox.inc_
+3. Test out code by writing it in _private://dev\_sandbox.inc_. Drupal has been
+   fully bootstrapped so everything is available that you'd expect in any
+   controller.
