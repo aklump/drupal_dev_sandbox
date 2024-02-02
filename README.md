@@ -50,7 +50,7 @@ None
 ## Usage
 
 1. When you want to reroute the request to _private://dev\_sandbox.inc_ add `sb=1` to the URL.
-2. To set the active theme also include `theme={theme_name}` to the URL
+2. To set the active theme also include `theme={theme_name}` in the URL.
 3. Test out code by writing it in _private://dev\_sandbox.inc_. Drupal has been
    fully bootstrapped so everything is available that you'd expect in any
    controller.
