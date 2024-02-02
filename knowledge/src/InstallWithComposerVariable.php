@@ -95,7 +95,7 @@ final class InstallWithComposerVariable {
         ]
         ```
 
-    1. Then `composer require {{ composer_require }}`    
+    1. Then `composer require --dev {{ composer_require }}`    
     EOD;
   }
 
