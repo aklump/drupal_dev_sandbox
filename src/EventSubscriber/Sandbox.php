@@ -56,7 +56,7 @@ class Sandbox implements EventSubscriberInterface {
       $this->trySetTheme($theme_name);
     }
 
-    $sandbox_filepath = self::getSandboxPath();
+    $sandbox_filepath = $this->getSandboxPath();
     $this->comments[] = "<!-- BEGIN OUTPUT from '$sandbox_filepath' -->";
     echo implode(PHP_EOL, $this->comments) . PHP_EOL;
 
@@ -81,7 +81,7 @@ class Sandbox implements EventSubscriberInterface {
     $this->comments[] = "<!-- ACTIVE THEME is '$theme_name' -->";
   }
 
-  public static function getSandboxPath(): string {
+  public function getSandboxPath(): string {
     return dirname(Drupal::root()) . '/dev_sandbox.inc';
   }
 
