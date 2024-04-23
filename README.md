@@ -6,13 +6,12 @@
 
 ## Summary
 
-Create a file at _private://dev\_sandbox.inc_. Add `sb=1` to any request query string and now _dev\_sandbox.inc_ becomes the response controller. Quickly test out snippets and code ideas in a bootstrapped environment during development. You may also set the active sandbox theme.
+Create a file called _dev\_sandbox.inc_. Add `sb=1` to any request query string and now _dev\_sandbox.inc_ becomes the response controller. Quickly test out snippets and code ideas in a bootstrapped environment during development. You may also set the active sandbox theme.
 
 ## Example
 
-_private://dev\_sandbox.inc_
-
 ```php
+// dev_sandbox.inc
 <?php
 echo 'Here is my sandbox controller output.';
 ```
@@ -22,7 +21,7 @@ View source for: https://website.com/?sb=1&theme=claro
 ```text
 <!-- DEV SANDBOX DEBUG -->
 <!-- ACTIVE THEME is 'claro' -->
-<!-- BEGIN OUTPUT from 'private://dev_sandbox.inc' -->
+<!-- BEGIN OUTPUT from 'dev_sandbox.inc' -->
 Here is my sandbox controller output.
 ```
 
@@ -39,18 +38,26 @@ Here is my sandbox controller output.
     ]
     ```
 
-1. Then `composer require --dev aklump_drupal/dev_sandbox:^0.0`    
-
-5. Enable this module.
+2. Then `composer require --dev aklump_drupal/dev_sandbox:^0.0`
+3. Enable this module.
 
 ## Configuration
 
-None
+```text
+.
+└── app
+    ├── dev_sandbox.inc
+    └── web
+```
+
+1. Create _dev\_sandbox.inc_ in the directory above (in otherwords, sibling to) the web root directory. @see `\Drupal\dev_sandbox\EventSubscriber\Sandbox::getSandboxPath`
+2. Do not commit _dev\_sandbox.inc_ to source control.
+3. Modify the contents as desired.
 
 ## Usage
 
-1. When you want to reroute the request to _private://dev\_sandbox.inc_ add `sb=1` to the URL.
+1. When you want to reroute the request to _dev\_sandbox.inc_ add `sb=1` to the URL.
 2. To set the active theme also include `theme={theme_name}` in the URL.
-3. Test out code by writing it in _private://dev\_sandbox.inc_. Drupal has been
+3. Test out code by writing it in _dev\_sandbox.inc_. Drupal has been
    fully bootstrapped so everything is available that you'd expect in any
    controller.

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Drupal\dev_sandbox\EventSubscriber;
 
+use Drupal;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\ControllerEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
@@ -47,7 +48,6 @@ class Sandbox implements EventSubscriberInterface {
 
     $this->comments = [];
 
-    $sandbox_filepath = $this->getSandboxPath();
     $this->comments[] = "<!-- DEV SANDBOX DEBUG -->";
 
     // Handle ?theme={theme_name}
@@ -56,6 +56,7 @@ class Sandbox implements EventSubscriberInterface {
       $this->trySetTheme($theme_name);
     }
 
+    $sandbox_filepath = self::getSandboxPath();
     $this->comments[] = "<!-- BEGIN OUTPUT from '$sandbox_filepath' -->";
     echo implode(PHP_EOL, $this->comments) . PHP_EOL;
 
@@ -73,15 +74,15 @@ class Sandbox implements EventSubscriberInterface {
 
   private function trySetTheme(string $theme_name): void {
     // We call this because it will throw an exception on invalid theme.
-    \Drupal::service('theme_handler')->getTheme($theme_name);
-    $active_theme = \Drupal::service('theme.initialization')
+    Drupal::service('theme_handler')->getTheme($theme_name);
+    $active_theme = Drupal::service('theme.initialization')
       ->initTheme($theme_name);
-    \Drupal::theme()->setActiveTheme($active_theme);
+    Drupal::theme()->setActiveTheme($active_theme);
     $this->comments[] = "<!-- ACTIVE THEME is '$theme_name' -->";
   }
 
-  private function getSandboxPath(): string {
-    return 'private://dev_sandbox.inc';
+  public static function getSandboxPath(): string {
+    return dirname(Drupal::root()) . '/dev_sandbox.inc';
   }
 
   /**
@@ -92,10 +93,15 @@ class Sandbox implements EventSubscriberInterface {
    * @throws \InvalidArgumentException If the file does not exist.
    */
   private function tryRequireSandbox(string $filepath): void {
-    if (!file_exists($filepath)) {
+    // https://drupal.stackexchange.com/questions/295114/why-does-include-call-publicstreamstream-set-option#comment372274_295116
+    /** @var \Drupal\Core\File\FileSystemInterface $filesystem */
+    $filesystem = Drupal::service('file_system');
+    $realpath = $filesystem->realpath($filepath);
+    if (!$realpath || !file_exists($realpath)) {
       throw new \InvalidArgumentException(sprintf('dev_sandbox.include is defined as %s; that path does not exist.', $filepath));
     }
-    require $filepath;
+
+    require $realpath;
   }
 
 }
