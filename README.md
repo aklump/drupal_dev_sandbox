@@ -6,12 +6,13 @@
 
 ## Summary
 
-Create a file called _dev\_sandbox.inc_. Add `sb=1` to any request query string and now _dev\_sandbox.inc_ becomes the response controller. Quickly test out snippets and code ideas in a bootstrapped environment during development. You may also set the active sandbox theme.
+Create a file at _private://dev\_sandbox.inc_. Add `sb=1` to any request query string and now _dev\_sandbox.inc_ becomes the response controller. Quickly test out snippets and code ideas in a bootstrapped environment during development. You may also set the active sandbox theme.
 
 ## Example
 
+_private://dev\_sandbox.inc_
+
 ```php
-// dev_sandbox.inc
 <?php
 echo 'Here is my sandbox controller output.';
 ```
@@ -38,8 +39,9 @@ Here is my sandbox controller output.
     ]
     ```
 
-2. Then `composer require --dev aklump_drupal/dev_sandbox:^0.0`
-3. Enable this module.
+1. Then `composer require --dev aklump_drupal/dev_sandbox:^0.0`
+
+5. Enable this module.
 
 ## Configuration
 

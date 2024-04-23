@@ -17,4 +17,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Design problem that caused _dev\_sandbox.inc_ to get deleted on remove sync with _private://_
 - Issue that showed  stream_set_option() not supported when using the controller.
-

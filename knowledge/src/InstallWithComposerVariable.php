@@ -51,7 +51,7 @@ final class InstallWithComposerVariable {
       $version = "^$version";
     }
     $composer_require = sprintf('%s:%s', $this->getPackageName(), $version);
-    $event->addVariable('composer_require', $composer_require);
+    $event->setVariable('composer_require', $composer_require);
     $install_directions = str_replace([
       '{{ github_url }}',
       '{{ composer_require }}',
@@ -59,7 +59,7 @@ final class InstallWithComposerVariable {
       $variables['github_url'],
       $composer_require,
     ], $this->getTemplate());
-    $event->addVariable('composer_install', $install_directions);
+    $event->setVariable('composer_install', $install_directions);
   }
 
   /**
@@ -83,7 +83,7 @@ final class InstallWithComposerVariable {
   private function getTemplate(): string {
     return /** @lang markdown */ <<<EOD
     ## Install with Composer
-    
+
     1. Because this is an unpublished package, you must define it's repository in your project's _composer.json_ file. Add the following to _composer.json_:
 
         ```json
@@ -95,7 +95,7 @@ final class InstallWithComposerVariable {
         ]
         ```
 
-    1. Then `composer require --dev {{ composer_require }}`    
+    1. Then `composer require --dev {{ composer_require }}`
     EOD;
   }
 
