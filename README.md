@@ -17,7 +17,7 @@ The controller file should be located at _web/../dev_sandbox.inc_.
     └── web
 ```
 
-##   Install with Composer
+## Install with Composer
 
 1. Because this is an unpublished package, you must define it's repository in
    your project's _composer.json_ file. Add the following to _composer.json_ in
@@ -25,8 +25,8 @@ The controller file should be located at _web/../dev_sandbox.inc_.
    
     ```json
     {
-        "type": "github",
-        "url": "https://github.com/aklump/drupal_dev_sandbox"
+     "type": "github",
+     "url": "https://github.com/aklump/drupal_dev_sandbox"
     }
     ```
 1. Require this package:
@@ -41,7 +41,8 @@ The controller file should be located at _web/../dev_sandbox.inc_.
    ```
 
 1. Enable this module.
-2. Do not commit _dev\_sandbox.inc_ to source control.
+1. Create controller, e.g. `touch dev_sandbox.inc` in the directory above web root.
+2. Add _dev\_sandbox.inc_ to _.gitignore_ as well.
 3. @see `\Drupal\dev_sandbox\EventSubscriber\Sandbox::getSandboxPath` for more info.
 
 ## Usage
