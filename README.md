@@ -19,26 +19,58 @@ The controller file should be located at _web/../dev_sandbox.inc_.
 
 ## Install with Composer
 
-1. Because this is an unpublished package, you must define it's repository in
-   your project's _composer.json_ file. Add the following to _composer.json_ in
-   the `repositories` array:
-   
+Because this is an unpublished, custom Drupal extension, the way you install and depend on it is a little different than published, contributed extensions.
+
+* Add the following to the **root-level** _composer.json_ in the `repositories` array:
     ```json
     {
      "type": "github",
      "url": "https://github.com/aklump/drupal_dev_sandbox"
     }
     ```
-1. Require this package:
-   
-    ```
-    composer require aklump_drupal/dev_sandbox:^0.0
-    ```
-1. Add the installed directory to _.gitignore_
-   
+* Add the installed directory to **root-level** _.gitignore_
+  
    ```php
    /web/modules/custom/dev_sandbox/
    ```
+* Proceed to either A or B, but not both.
+---
+### A. Install Standalone
+* Require _dev_sandbox_ at the **root-level**.
+    ```
+    composer require --dev aklump_drupal/dev_sandbox:^0.0
+    ```
+---
+### B. Depend on This Module
+(_Replace `my_module` with your module's real name._)
+
+* Add the following to _my_module/composer.json_ in the `repositories` array. (_Yes, this is done both here and at the root-level._)
+    ```json
+    {
+     "type": "github",
+     "url": "https://github.com/aklump/drupal_dev_sandbox"
+    }
+    ```
+* From the depending module directory run:
+    ```
+    composer require --dev aklump_drupal/dev_sandbox:^0.0 --no-update
+    ```
+
+* Add the following to _my_module.info.yml_ in the `dependencies` array:
+    ```yaml
+    aklump_drupal:dev_sandbox
+    ```
+* Back at the **root-level** run `composer update my_module`
+
+
+---
+### Enable This Module
+
+* Re-build Drupal caches, if necessary.
+* Enable this module, e.g.,
+  ```shell
+  drush pm-install dev_sandbox
+  ```
 
 1. Enable this module.
 1. Create controller, e.g. `touch dev_sandbox.inc` in the directory above web root.
