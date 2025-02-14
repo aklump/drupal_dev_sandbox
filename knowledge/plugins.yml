@@ -1,5 +1,5 @@
 #mermaid:
 #  width: 1000
 composer: {
-  requireDev: true
+  require_dev: true
 }

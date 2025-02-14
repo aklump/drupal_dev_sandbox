@@ -19,7 +19,7 @@ The controller file should be located at _web/../dev_sandbox.inc_.
 
 ## Install with Composer
 
-Because this is an unpublished, custom Drupal extension, the way you install and depend on it is a little different than published, contributed extensions.
+Because this is an unpublished, custom Drupal module, the way you install and depend on it is a little different than published, contributed modules.
 
 * Add the following to the **root-level** _composer.json_ in the `repositories` array:
     ```json
@@ -42,7 +42,8 @@ Because this is an unpublished, custom Drupal extension, the way you install and
     ```
 ---
 ### B. Depend on This Module
-(_Replace `my_module` with your module's real name._)
+
+(_Replace `my_module` below with your module (or theme's) real name._)
 
 * Add the following to _my_module/composer.json_ in the `repositories` array. (_Yes, this is done both here and at the root-level._)
     ```json
@@ -51,7 +52,7 @@ Because this is an unpublished, custom Drupal extension, the way you install and
      "url": "https://github.com/aklump/drupal_dev_sandbox"
     }
     ```
-* From the depending module directory run:
+* From the depending module (or theme) directory run:
     ```
     composer require --dev aklump_drupal/dev_sandbox:^0.0 --no-update
     ```
@@ -60,7 +61,7 @@ Because this is an unpublished, custom Drupal extension, the way you install and
     ```yaml
     aklump_drupal:dev_sandbox
     ```
-* Back at the **root-level** run `composer update my_module`
+* Back at the **root-level** run `composer update vendor/my_module`
 
 
 ---
@@ -69,7 +70,7 @@ Because this is an unpublished, custom Drupal extension, the way you install and
 * Re-build Drupal caches, if necessary.
 * Enable this module, e.g.,
   ```shell
-  drush pm-install dev_sandbox
+  drush pm-enable dev_sandbox
   ```
 
 1. Enable this module.
