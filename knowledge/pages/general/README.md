@@ -24,7 +24,6 @@ The controller file should be located at _web/../dev_sandbox.inc_.
 
 {{ composer.install|raw }}
 
-1. Enable this module.
 1. Create controller, e.g. `touch dev_sandbox.inc` in the directory above web root.
 2. Add _dev\_sandbox.inc_ to _.gitignore_ as well.
 3. @see `\Drupal\dev_sandbox\EventSubscriber\Sandbox::getSandboxPath` for more info.
